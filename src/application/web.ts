@@ -8,7 +8,7 @@ export const web = express();
 web.use(express.json());
 web.use(
   cors({
-    origin: "https://fe-contact-management.netlify.app/",
+    origin : "*",
     credentials : true
   })
 );
