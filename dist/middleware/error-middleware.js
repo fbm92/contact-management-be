@@ -23,7 +23,7 @@ const errorMiddleWare = (error, req, res, next) => __awaiter(void 0, void 0, voi
             });
         }
         res.status(400).json({
-            errors: result,
+            errors: JSON.stringify(result),
         });
     }
     else if (error instanceof response_error_1.ResponseError) {

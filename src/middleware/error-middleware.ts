@@ -1,6 +1,7 @@
 import { NextFunction, Request, response, Response } from "express";
 import { array, ZodError } from "zod";
 import { ResponseError } from "../error/response-error";
+import { Prisma } from "@prisma/client";
 
 export const errorMiddleWare = async (error: Error, req: Request, res: Response, next: NextFunction) => {
   if (error instanceof ZodError) {
@@ -12,9 +13,8 @@ export const errorMiddleWare = async (error: Error, req: Request, res: Response,
         path : err[i].path[0]
       })
     }
-   
     res.status(400).json({
-      errors: result,
+      errors: JSON.stringify(result),
     });
   }
   else if (error instanceof ResponseError) {
