@@ -17,7 +17,7 @@ const errorMiddleWare = (error, req, res, next) => __awaiter(void 0, void 0, voi
         const err = JSON.parse(error.message);
         let result = "";
         for (let i = 0; i < err.length; i++) {
-            result += `Path : ${err[i].path[0]} : ${err[i].message} \n`;
+            result += `Path : ${err[i].path[0]} : ${err[i].message} <br>`;
             // result.push({
             //   message : err[i].message,
             //   path : err[i].path[0]
