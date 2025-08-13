@@ -15,15 +15,17 @@ const response_error_1 = require("../error/response-error");
 const errorMiddleWare = (error, req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     if (error instanceof zod_1.ZodError) {
         const err = JSON.parse(error.message);
-        const result = [];
+        let result = "";
         for (let i = 0; i < err.length; i++) {
-            result.push({
-                message: err[i].message,
-                path: err[i].path[0]
-            });
+            result += `Path : ${err[i].path[0]} : ${err[i].message} \n`;
+            // result.push({
+            //   message : err[i].message,
+            //   path : err[i].path[0]
+            // })
         }
         res.status(400).json({
-            errors: JSON.stringify(result),
+            // errors: JSON.stringify(result),
+            errors: result
         });
     }
     else if (error instanceof response_error_1.ResponseError) {
